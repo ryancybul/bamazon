@@ -20,7 +20,7 @@ The bamazon app is a CLI application that allows users to purchase or manage pro
 * item 1 User is prompted with four choices. 
 
 * item 2 View Products for Sale will display all items.
-![Image of Products]()
+![Image of Products](https://ryancybul.github.io/bamazon/Images/m1.png/)
 
 * item 3 View Low Inventory will display all items with an inventory level lower than 5. 
 ![Image of Low Inventory]()
