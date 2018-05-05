@@ -118,7 +118,44 @@ function grabProduct(choiceID, res){
 }
 
 function addNewProduct(){
-    returnToMenu();
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'product',
+            message: 'What is the name of the product you want to add?'
+        },
+        {
+            type: 'input',
+            name: 'department',
+            message: 'What is the deparment of this product?'
+        },
+        {
+            type: 'input',
+            name: 'price',
+            message: 'What is the price of the product?'
+        },
+        {
+            type: 'input',
+            name: 'quantity',
+            message: 'How many units do you want to add?'
+        }
+    ]).then(results => {
+        console.log('Item successfully added!\n');
+        var query = connection.query(
+            'insert into products set ?',
+            {
+                product_name: results.product,
+                department_name: results.department,
+                price: results.price,
+                stock_quantity: results.quantity
+            },
+            function(err,res){
+                if (err) throw err;
+                console.log(results.quantity + ' of ' + results.product + ' was added to your inventory.');
+                returnToMenu();
+            }
+        )
+    });
 }
 
 //Prompts user to continue using the application or exit. 
